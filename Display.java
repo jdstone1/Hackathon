@@ -17,7 +17,7 @@ public class Display extends JFrame implements MouseListener
    
     private Bin recycling, trash, compost;
     private Piece p;
-    private int startY = 20;
+    private int startY = 50;
 
     /**
      * Constructor for objects of class Display
@@ -44,8 +44,8 @@ public class Display extends JFrame implements MouseListener
         compost = new Bin("Compost", 400);
         g.setColor(Color.GRAY);
         compost.drawBin(g);
-        p = new Piece("Trash", 400, startY);
-        g.setColor(Color.BLUE);
+        p = new Piece("paper", 400, startY);
+        //g.setColor(Color.BLUE);
         p.drawPiece(g);
     }
     

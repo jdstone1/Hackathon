@@ -6,6 +6,12 @@
  * @version (a version number or a date)
  */
 import java.awt.*;
+import java.awt.Color;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 public class Piece
 {
@@ -49,8 +55,39 @@ public class Piece
         return startY;
     }
     
+    public BufferedImage loadImage(String filename)
+    {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(filename));
+        } catch (IOException e) {
+        }
+        return img;
+    }
+    
     public void drawPiece(Graphics g)
     {
-        g.fillOval(startX,startY,20,20);
+        g.drawImage(loadImage("paperCrumpledPiece"), startX, startY, null);
+        /*g.fillOval(startX,startY,20,20);
+        if (name.equals("paper"))
+        {
+            g.drawImage(loadImage("paperCrumpledPiece"), startX, startY, null);
+        }
+        else if (name.equals("plastic"))
+        {
+            
+        }
+        else if (name == "metal")
+        {
+            
+        }
+        else if (name == "glass")
+        {
+            
+        }
+        else
+        {
+            
+        }*/
     }
 }
