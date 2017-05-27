@@ -67,7 +67,7 @@ public class Piece
     
     public void drawPiece(Graphics g)
     {
-        g.drawImage(loadImage("paperCrumpledPiece"), startX, startY, null);
+        g.drawImage(loadImage("paperCrumpledPiece.png"), startX, startY, 40, 40, null);
         /*g.fillOval(startX,startY,20,20);
         if (name.equals("paper"))
         {
