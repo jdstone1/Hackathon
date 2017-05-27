@@ -5,14 +5,15 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Display
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Display extends JFrame
 {
     // instance variables - replace the example below with your own
     private int x;
 
-    /**
-     * Constructor for objects of class Display
-     */
     public Display()
     {
         // initialise instance variables
