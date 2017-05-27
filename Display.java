@@ -6,29 +6,62 @@
  * @version (a version number or a date)
  */
 
+import TurtleGraphics.*;
 import java.awt.*;
 import javax.swing.*;
+import java.util.*;
+import java.awt.event.*;
 
-public class Display extends JFrame
+public class Display extends JFrame implements MouseListener
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private SketchPad pad;
+    private Pen p;
 
+    /**
+     * Constructor for objects of class Display
+     */
     public Display()
     {
         // initialise instance variables
-        x = 0;
+        pad = new SketchPad();
+        p = new StandardPen(pad);
+        pad.setBackground(Color.DARK_GRAY);
+        pad.addMouseListener(this);
+        p.setColor(Color.GRAY);
+        p.setWidth(1);
+        
+        Container con = getContentPane();
+        con.add(pad);
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(700,700);
+        setResizable(true);
+        setVisible(true);
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public void mousePressed(MouseEvent e)
     {
-        // put your code here
-        return x + y;
+        
+    }
+    
+    public void mouseClicked(MouseEvent e)
+    {
+        
+    }
+    
+    public void mouseReleased(MouseEvent e)
+    {
+        
+    }
+    
+    public void mouseExited(MouseEvent e)
+    {
+        
+    }
+    
+    public void mouseEntered(MouseEvent e)
+    {
+        
     }
 }
