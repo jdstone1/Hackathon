@@ -47,6 +47,8 @@ public class Display extends JFrame implements MouseListener
         p = new Piece("paper", 400, startY);
         //g.setColor(Color.BLUE);
         p.drawPiece(g);
+        
+        setVisible(true);
     }
     
     public void play()
