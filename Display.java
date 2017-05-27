@@ -45,6 +45,10 @@ public class Display extends JFrame implements MouseListener
         compost.setPenColor(Color.GRAY);
         compost.drawBin();
         
+        Piece p = new Piece("Trash", -200, 325, pen);
+        p.setPenColor(Color.BLUE);
+        p.drawPiece();
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,750);
         setResizable(true);
