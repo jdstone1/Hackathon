@@ -16,7 +16,8 @@ public class Display extends JFrame implements MouseListener
 {
     // instance variables - replace the example below with your own
     private SketchPad pad;
-    private Pen p;
+    private Pen pen;
+    private Bin recycling, trash, compost;
 
     /**
      * Constructor for objects of class Display
@@ -25,17 +26,27 @@ public class Display extends JFrame implements MouseListener
     {
         // initialise instance variables
         pad = new SketchPad();
-        p = new StandardPen(pad);
-        pad.setBackground(Color.DARK_GRAY);
+        pen = new StandardPen(pad);
+        pad.setBackground(Color.WHITE);
         pad.addMouseListener(this);
-        p.setColor(Color.GRAY);
-        p.setWidth(1);
+        pen.setColor(Color.GRAY);
+        pen.setWidth(1);
         
         Container con = getContentPane();
         con.add(pad);
         
+        recycling = new Bin("Recycling", -300, pen);
+        recycling.setPenColor(Color.GREEN);
+        recycling.drawBin();
+        trash = new Bin("Trash", -100, pen);
+        trash.setPenColor(Color.BLACK);
+        trash.drawBin();
+        compost = new Bin("Compost", 100, pen);
+        compost.setPenColor(Color.GRAY);
+        compost.drawBin();
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(700,700);
+        setSize(600,750);
         setResizable(true);
         setVisible(true);
     }
@@ -63,5 +74,10 @@ public class Display extends JFrame implements MouseListener
     public void mouseEntered(MouseEvent e)
     {
         
+    }
+    
+    public static void main(String[] args)
+    {
+        Display d = new Display();
     }
 }
