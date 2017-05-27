@@ -35,6 +35,7 @@ public class Display extends JFrame implements MouseListener
     
     public void paint(Graphics g)
     {
+        g.clearRect(0,0,(int) getSize().getWidth(), (int) getSize().getHeight());
         recycling = new Bin("Recycling", 0);
         g.setColor(Color.GREEN);
         recycling.drawBin(g);
