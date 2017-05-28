@@ -20,6 +20,10 @@ public class Bin
     private int startX;
     private BufferedImage img;
     private boolean full;
+    private int numPieces;
+    
+    private JLabel binFull = new JLabel("The " + name + "bin is full!");
+    private JLabel wrongBin = new JLabel("Wrong bin!");
 
     /**
      * Constructor for objects of class Bin
@@ -33,13 +37,13 @@ public class Bin
             switch(name)
             {
                 case "trash":
-                loadImage("trashPizzaPiece.jpg");
+                loadImage("fullTrash.png");
                 break;
                 case "recycling":
-                loadImage("trashStyroPiece.jpg");
+                loadImage("fullBin.png");
                 break;
                 case "compost":
-                loadImage("trashDiaperPiece.jpg");
+                loadImage("fullCompost.png");
                 break;
             }
         }
@@ -48,19 +52,19 @@ public class Bin
             switch(name)
             {
                 case "trash":
-                loadImage("trashPizzaPiece.jpg");
+                loadImage("emptyTrash.png");
                 break;
                 case "recycling":
-                loadImage("trashStyroPiece.jpg");
+                loadImage("emptyBin.png");
                 break;
                 case "compost":
-                loadImage("trashDiaperPiece.jpg");
+                loadImage("emptyCompost.png");
                 break;
             }
         }
     }
     
-    public void drawBin(Graphics g)
+    public void drawBin2(Graphics g)
     {
         g.fillRect(startX,650,5,100);
         g.fillRect(startX+5,745,190,5);
@@ -76,8 +80,38 @@ public class Bin
         }
     }
     
-    public void drawPiece(Graphics g)
+    public void drawBin(Graphics g)
     {
-        g.drawImage(img, startX, 650, 50, 50, null);
+        g.drawImage(img, startX, 500, 100, 130, null);
+    }
+    
+    public void binFullMessage(Graphics g)
+    {
+        g.drawString("The " + name + "bin is full!", 300, 300);
+    }
+    
+    public void wrongBinMessage(Graphics g)
+    {
+        g.drawString("Wrong bin!", 300, 300);
+    }
+    
+    public void addPiece(Piece p, Graphics g)
+    {
+        if (!full && p.getBin().equals(name))
+        {
+            numPieces++;
+        }
+        else if (full && p.getBin().equals(name))
+        {
+            binFullMessage(g);
+        }
+        else
+        {
+            wrongBinMessage(g);
+        }
+        if (numPieces == 10)
+        {
+            full = true;
+        }
     }
 }

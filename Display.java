@@ -31,6 +31,7 @@ public class Display extends JPanel
         // {
             // pieces[i] = new Piece((int) (Math.random()*551), startY);
         // }
+
         p = new Piece((int) (Math.random()*551), startY);
         //p.drawPiece();
         setOpaque(true);
@@ -39,13 +40,33 @@ public class Display extends JPanel
         setPreferredSize(new Dimension(600,750));
         //setResizable(true);
         setVisible(true);
-        timer = new Timer(10, new ActionListener() {
+        timer = new Timer(5, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                startY++;
+                startY += 2;
                 repaint();
-                if(startY + 50 >=  745) timer.stop();
+                if(startY + 50 >=  745) 
+                {
+                    Graphics g = getGraphics();
+                    timer.stop();
+                    if (p.getX() > 50 && p.getX() < 150)
+                    {
+                        recycling.addPiece(p,g);
+                    }
+                    else if (p.getX() > 250 && p.getX() < 350)
+                    {
+                        trash.addPiece(p, g);
+                    }
+                    else if (p.getX() > 450 && p.getX() < 550)
+                    {
+                        compost.addPiece(p, g);
+                    }
+                    else
+                    {
+                        
+                    }
+                }
             }
         });
         timer.start();
@@ -59,14 +80,11 @@ public class Display extends JPanel
         g.clearRect(0,0,(int) getSize().getWidth(), (int) getSize().getHeight());
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0,0,(int) getSize().getWidth(), (int) getSize().getHeight());
-        recycling = new Bin("Recycling", 0);
-        g.setColor(Color.GREEN);
+        recycling = new Bin("recycling", 50);
         recycling.drawBin(g);
-        trash = new Bin("Trash", 200);
-        g.setColor(Color.BLACK);
+        trash = new Bin("trash", 250);
         trash.drawBin(g);
-        compost = new Bin("Compost", 400);
-        g.setColor(Color.GRAY);
+        compost = new Bin("compost", 450);
         compost.drawBin(g);
         p.setY(startY);
         p.drawPiece(g);

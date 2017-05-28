@@ -104,6 +104,20 @@ public class Piece
     {
         return startY;
     }
+    
+    public String getBin()
+    {
+        switch(bin)
+        {
+            case 1:
+                return "trash";
+            case 2:
+                return "compost";
+            case 3:
+                return "recycling";
+        }
+        return "";
+    }
 
     public void loadImage(String filename)
     {
