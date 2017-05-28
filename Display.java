@@ -21,6 +21,9 @@ public class Display extends JPanel
     private Piece p;
     private int startY = 50;
     private Timer timer = null;
+    private JButton emptyRecycling = new JButton("Empty Recycling");
+    private JButton emptyTrash = new JButton("Empty Trash");
+    private JButton emptyCompost = new JButton("Empty Compost");
 
     /**
      * Constructor for objects of class Display
@@ -51,31 +54,33 @@ public class Display extends JPanel
             {
                 startY++;
                 repaint();
-                if(startY + 50 >=  745) 
+                if(startY + 50 >=  650) 
                 {
                     Graphics g = getGraphics();
                     timer.stop();
-                    // if (p.getX() > 50 && p.getX() < 150)
-                    // {
-                        // recycling.addPiece(p,g);
-                    // }
-                    // else if (p.getX() > 250 && p.getX() < 350)
-                    // {
-                        // trash.addPiece(p, g);
-                    // }
-                    // else if (p.getX() > 450 && p.getX() < 550)
-                    // {
-                        // compost.addPiece(p, g);
-                    // }
-                    // else
-                    // {
-                        
-                    // }
+                    if (p.getX() > 50 && p.getX() < 150)
+                    {
+                        recycling.addPiece(p, g);
+                        return;
+                    }
+                    else if (p.getX() > 250 && p.getX() < 350)
+                    {
+                        trash.addPiece(p, g);
+                        return;
+                    }
+                    else if (p.getX() > 450 && p.getX() < 550)
+                    {
+                        compost.addPiece(p, g);
+                        return;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
         });
         timer.start();
-        
     }
     
     @Override
@@ -94,7 +99,23 @@ public class Display extends JPanel
     }
 
     public static void main(String[] args) {
+        JButton emptyRecycling = new JButton("Empty Recycling");
+        JButton emptyTrash = new JButton("Empty Trash");
+        JButton emptyCompost = new JButton("Empty Compost");
+        JLabel title = new JLabel("Recycling Game");
+        
         JFrame frame = new JFrame();
+        JPanel buttonPanel = new JPanel();
+        JPanel controlPanel = new JPanel();
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+        frame.add(controlPanel, BorderLayout.NORTH);
+        
+        buttonPanel.add(emptyRecycling);
+        buttonPanel.add(emptyTrash);
+        buttonPanel.add(emptyCompost);
+        
+        controlPanel.add(title);
+        
         Display d = new Display();
         frame.getContentPane().add(d);
         frame.getContentPane().setBackground(Color.LIGHT_GRAY);

@@ -64,13 +64,6 @@ public class Bin
         }
     }
     
-    public void drawBin2(Graphics g)
-    {
-        g.fillRect(startX,650,5,100);
-        g.fillRect(startX+5,745,190,5);
-        g.fillRect(startX+195,650,5,100);
-    }
-    
     public void loadImage(String filename)
     {
         img = null;
@@ -82,7 +75,7 @@ public class Bin
     
     public void drawBin(Graphics g)
     {
-        g.drawImage(img, startX, 500, 100, 130, null);
+        g.drawImage(img, startX, 600, 100, 130, null);
     }
     
     public void binFullMessage(Graphics g)
@@ -93,6 +86,11 @@ public class Bin
     public void wrongBinMessage(Graphics g)
     {
         g.drawString("Wrong bin!", 300, 300);
+    }
+    
+    public void setFull()
+    {
+        full = true;
     }
     
     public void addPiece(Piece p, Graphics g)
