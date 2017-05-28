@@ -33,6 +33,9 @@ public class Display extends JPanel
         // }
 
         p = new Piece((int) (Math.random()*551), startY);
+        recycling = new Bin("recycling", 50);
+        trash = new Bin("trash", 250);
+        compost = new Bin("compost", 450);
         //p.drawPiece();
         setOpaque(true);
         setBackground(Color.LIGHT_GRAY);
@@ -40,32 +43,34 @@ public class Display extends JPanel
         setPreferredSize(new Dimension(600,750));
         //setResizable(true);
         setVisible(true);
+        
+        
         timer = new Timer(5, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                startY += 2;
+                startY++;
                 repaint();
                 if(startY + 50 >=  745) 
                 {
                     Graphics g = getGraphics();
                     timer.stop();
-                    if (p.getX() > 50 && p.getX() < 150)
-                    {
-                        recycling.addPiece(p,g);
-                    }
-                    else if (p.getX() > 250 && p.getX() < 350)
-                    {
-                        trash.addPiece(p, g);
-                    }
-                    else if (p.getX() > 450 && p.getX() < 550)
-                    {
-                        compost.addPiece(p, g);
-                    }
-                    else
-                    {
+                    // if (p.getX() > 50 && p.getX() < 150)
+                    // {
+                        // recycling.addPiece(p,g);
+                    // }
+                    // else if (p.getX() > 250 && p.getX() < 350)
+                    // {
+                        // trash.addPiece(p, g);
+                    // }
+                    // else if (p.getX() > 450 && p.getX() < 550)
+                    // {
+                        // compost.addPiece(p, g);
+                    // }
+                    // else
+                    // {
                         
-                    }
+                    // }
                 }
             }
         });
@@ -80,11 +85,8 @@ public class Display extends JPanel
         g.clearRect(0,0,(int) getSize().getWidth(), (int) getSize().getHeight());
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0,0,(int) getSize().getWidth(), (int) getSize().getHeight());
-        recycling = new Bin("recycling", 50);
         recycling.drawBin(g);
-        trash = new Bin("trash", 250);
         trash.drawBin(g);
-        compost = new Bin("compost", 450);
         compost.drawBin(g);
         p.setY(startY);
         p.drawPiece(g);
